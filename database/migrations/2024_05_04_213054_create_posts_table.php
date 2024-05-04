@@ -16,9 +16,9 @@ return new class extends Migration
             $table->timestamps();
 
             $table->bigInteger('user_id')->unsigned();
-            $table->postTitle->string();
-            $table->postContent->longText();
-            $table->postCategory->string();
+            $table->string('postTitle');
+            $table->longText('postContent');
+            $table->string('postCategory');
 
             $table->foreign('user_id')->references('id')->on('users')
             ->onDelete('cascade')->onUpdate('cascade');
