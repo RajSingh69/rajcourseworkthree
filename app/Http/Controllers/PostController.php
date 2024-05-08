@@ -10,10 +10,16 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function __construct () {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+
         $posts = Post::all();
+        $posts = Post::orderby('created_at','desc')->paginate(8);
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -88,5 +94,10 @@ class PostController extends Controller
     public function destroy(string $id)
     {
         //
+        $post = Post::findorFail($id);
+        $post->delete();
+
+        return redirect()->route('posts.index')->with('message','Post was deleted.');
+
     }
 }

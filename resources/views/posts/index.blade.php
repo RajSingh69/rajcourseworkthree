@@ -60,7 +60,31 @@
     @foreach ($posts as $post)
         <h2> <a href="/posts/{{$post->id}}"> {{ $post->postTitle }} </a> </h2>
         <p> Post Content: {{ $post->postContent }} </p>
+        
+
+        <h2> Here are the comments for this post </h2>
+
+        @foreach($post->comments as $comment)     
+        <li>{{ $comment->commentContent }}</li>       
+        @endforeach
+
+        
+
         <hr>
+
     @endforeach
+
+
+
+
+
+
+
+
+
+    <div class = "footer">
+    {{ $posts -> onEachSide(5)->links()}}
+    </div>
+
 
 @endsection
