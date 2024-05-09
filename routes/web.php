@@ -22,8 +22,9 @@ Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name
 Route::get('/comments', [CommentController::class, 'index']) ->name('comments.index');
 Route::get('/comments/create', [CommentController::class, 'create'])->name('comments.create');
 Route::get('/comments/{id}', [CommentController::class, 'show'])->name('comments.show');
-    
 
+Route::get('/users/{user}', [UserController::class,'show'])->name('users.show');
+    
 
 Route::get('/dashboard', function () {
     return view('dashboard');

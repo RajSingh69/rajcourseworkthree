@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -44,7 +45,7 @@ class PostController extends Controller
             'postTitle' => 'required|max:255',
             'postContent' => 'required|max:255',
             'postCategory' => 'required|max:255',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            //'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
 
@@ -56,7 +57,7 @@ class PostController extends Controller
         $a->user_id = auth()->id();
 
         if ($request->hasFile('image')){
-            $imagePath = $request->file('image')->store('image','public');
+            $imagePath = $request->file('image')->store('images','public');
             $a->image_path=$imagePath;
         }
 

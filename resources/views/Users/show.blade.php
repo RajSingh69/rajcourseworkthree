@@ -6,7 +6,7 @@
     <h1>{{ $user->name }}'s Posts and Comments</h1>
 
     @foreach($posts as $post)
-        <h2>{{ $post->postContent }}</h2>
+        <h2>{{ $post->post_data }}</h2>
         <p>Posted by: {{ $user->name }}</p>
 
         <ul>
@@ -17,4 +17,4 @@
     @endforeach
 
     {{ $posts->links() }}
-@endsecti
+@endsection

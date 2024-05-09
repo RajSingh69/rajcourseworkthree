@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\User;
+
+
 
 class UserController extends Controller
 {
@@ -13,8 +17,7 @@ class UserController extends Controller
     {
         //
         $users = User::all();
-        $posts = $user->posts()->with('comments')->latest()->paginate(5);
-        return view('users.show', compact('users'));
+        return view('users.index', compact('users'));
 
     }
 
@@ -38,14 +41,12 @@ class UserController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
-    {
-        //
-        $user = User::findorFail($id);
-        $posts = $user->posts ?? [];
-        $posts = $user->posts()->with('comments')->latest()->paginate(5);
-        return view('users.show', compact('user', 'posts'));
+{
+    $user = User::findOrFail($id);
+    $posts = $user->posts()->paginate(5); // Paginate the posts
 
-    }
+    return view('users.show', compact('user', 'posts'));
+}
 
     /**
      * Show the form for editing the specified resource.

@@ -150,7 +150,7 @@
         <h1>I am the details from a single post!</h1>
 
         @if ($post->image_path)
-            <img src="{{asset('storage/' . $post->image_path)}}" alt="Posted Image goes here">
+            <p> <img src="{{asset('storage/' . $post->image_path)}}" alt="Posted Image should be here - my c drive and wsl is corrupted."> </p>
         @endif
 
         <ul>

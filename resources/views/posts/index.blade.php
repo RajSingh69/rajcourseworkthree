@@ -141,7 +141,11 @@
         @foreach ($posts as $post)
 
                 @if ($post->image_path)
-                    <img src="{{ asset('storage' . $post->image_path) }}" alt="Posted Image goes here">
+                    <p> <img src="{{ asset('storage/' . $post->image_path) }}" alt="Posted Image should be here - my c drive and wsl is corrupted."> </p>
+                @endif
+
+                @if($user = $post->user) 
+                    <p>Posted by: <a href="{{ route('users.show', ['user' => $post->user]) }}">{{ $user->name }}</a></p>
                 @endif
 
             <div class="post">
