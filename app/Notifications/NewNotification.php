@@ -7,16 +7,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class newComment extends Notification
+class NewNotification extends Notification
 {
     use Queueable;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+
+    public $comment;
+
+    public function __construct($comment)
     {
         //
+        $this->comment = $comment;
+
     }
 
     /**
@@ -33,10 +38,13 @@ class newComment extends Notification
      * Get the mail representation of the notification.
      */
     public function toMail(object $notifiable): MailMessage
+
     {
+        $commentUrl = route('comments.show', ['id' => $this->comment->id]);
+
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->line('There are some new messages.')
+                    ->action("View Comment", $commentUrl)
                     ->line('Thank you for using our application!');
     }
 

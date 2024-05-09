@@ -7,6 +7,8 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Notifications\NewNotification;
 
+
+
 class CommentController extends Controller
 {
     /**
@@ -49,7 +51,7 @@ class CommentController extends Controller
 
         $post = Post::find($post_id);
         $postUser = $post->user;
-        //$postUser->notify(new NewNotification($a));
+        $postUser->notify(new NewNotification($a));
 
         session()->flash('message', 'Comment was created.');
         return redirect()->back()->with('success','Comment added');
