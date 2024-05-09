@@ -126,8 +126,14 @@
 
     <div class="container">
         <h1>--- Create A New Post --- </h1>
-        <form method="POST" action="{{ route('posts.store') }}">
+        <form method="POST" action="{{ route('posts.store') }}" enctype = "multipart/form-data">
             @csrf
+
+            <li>
+                <label for="image">Image AAAAA:</label>
+                    <br>
+                    <input type="file" name="image" id="image"/>
+            </li>
 
             <h6>Title: <input type="text" name="postTitle"></h6>
             <h6>Content: <input type="text" name="postContent"></h6>

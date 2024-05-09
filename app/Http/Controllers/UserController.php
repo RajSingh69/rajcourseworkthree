@@ -12,6 +12,10 @@ class UserController extends Controller
     public function index()
     {
         //
+        $users = User::all();
+        $posts = $user->posts()->with('comments')->latest()->paginate(5);
+        return view('users.show', compact('users'));
+
     }
 
     /**
@@ -36,6 +40,11 @@ class UserController extends Controller
     public function show(string $id)
     {
         //
+        $user = User::findorFail($id);
+        $posts = $user->posts ?? [];
+        $posts = $user->posts()->with('comments')->latest()->paginate(5);
+        return view('users.show', compact('user', 'posts'));
+
     }
 
     /**

@@ -144,8 +144,14 @@
         }
     </style>
 
+        
+
     <div class="container">
         <h1>I am the details from a single post!</h1>
+
+        @if ($post->image_path)
+            <img src="{{asset('storage/' . $post->image_path)}}" alt="Posted Image goes here">
+        @endif
 
         <ul>
             <li><h2><b>Post Title:</b> <br> {{ $post->postTitle }}</h2></li>

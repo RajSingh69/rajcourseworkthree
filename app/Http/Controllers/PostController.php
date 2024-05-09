@@ -44,9 +44,9 @@ class PostController extends Controller
             'postTitle' => 'required|max:255',
             'postContent' => 'required|max:255',
             'postCategory' => 'required|max:255',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        //return "You have passed the validation checks!";
 
         $a = new Post;
         $a->postTitle = $validatedData['postTitle'];
@@ -54,6 +54,11 @@ class PostController extends Controller
         $a->postCategory = $validatedData['postCategory'];
 
         $a->user_id = auth()->id();
+
+        if ($request->hasFile('image')){
+            $imagePath = $request->file('image')->store('image','public');
+            $a->image_path=$imagePath;
+        }
 
         $a->save();
 

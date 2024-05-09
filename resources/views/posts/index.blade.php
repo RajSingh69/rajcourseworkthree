@@ -128,6 +128,8 @@
         }
     </style>
 
+                
+
     <div class="container">
         <h1>All beautiful posts are here! Please click on them to see the amazing story they tell!</h1>
         <h2>Would you like to add your story to the world databank? Here's your chance!</h2>
@@ -138,6 +140,10 @@
 
         @foreach ($posts as $post)
 
+                @if ($post->image_path)
+                    <img src="{{ asset('storage' . $post->image_path) }}" alt="Posted Image goes here">
+                @endif
+
             <div class="post">
 
                 <div class="post-title">
@@ -145,9 +151,19 @@
                     <a href="/posts/{{$post->id}}">{{$post->postTitle}}</a>
                 </div>
 
+
+
+                <!-- @if ($post->image_path)
+                    <img src="{{asset('storage/' . $post->image_path)}}" alt="Post Image">
+                @endif -->
+
+                
+
+
                 <div class="post-content">
                     <b>Post Content:</b><br>
                     {{$post->postContent}}
+                    <p>Posted: {{$post->created_at->diffForHumans()}}</p>
                 </div>
 
                 <div class="comments">
