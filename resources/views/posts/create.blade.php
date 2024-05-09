@@ -27,6 +27,39 @@
             font-family: Garamond;
             margin-bottom: 10px;
         }
+        h2 {
+            font-size: 18px;
+            color: #F3A712;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-family: Helvetica;
+            text-align: center;
+        }
+        h3 {
+            text-align: center;
+            font-size: 16px;
+            color: #FCFCFC;
+            font-family: Arial;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* Post title..... */
+        h4 {
+            text-align: center;
+            font-size: 20px;
+            color: #FCFCFC;
+            font-weight: bold;
+            font-family: Helvetica;
+        }
+
+        /* Here are the commetns for this post */
+        h5 {
+            font-size: 18px;
+            color: #A7CECB;
+            font-style: italic;
+            font-family: Arial;
+        }
 
         h6 {
             font-size: 20px;
@@ -34,6 +67,13 @@
             font-family: Arial;
             text-align: center;
             margin-top: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #FCFCFC;
+
+            font-family: Arial;
         }
 
         a {

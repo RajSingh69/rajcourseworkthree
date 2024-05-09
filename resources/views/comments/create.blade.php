@@ -1,6 +1,6 @@
 @extends('layouts.home')
  
-@section('title', 'Comment a headline')
+@section('title', 'Add a new comment here!')
  
 
  

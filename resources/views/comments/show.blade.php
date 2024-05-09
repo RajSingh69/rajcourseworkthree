@@ -1,11 +1,9 @@
 @extends('layouts.home')
  
-@section('title', 'Create a headline')
+@section('title', 'Showing a single comment!')
 
  
 @section('content')
-<p>Dont follow the trend be your own headline </p>
-<p>Your headline</p>
 <ul>
     <li>Comment: {{$comment->commentContent}}</li>
     

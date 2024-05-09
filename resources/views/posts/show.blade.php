@@ -1,6 +1,6 @@
 @extends('layouts.home')
 
-@section('title', 'Viewing All Posts!')
+@section('title', 'Viewing Post Details!')
 
 @section('content')
 
@@ -20,41 +20,75 @@
             border-radius: 8px;
         }
 
-        p, h1, h2, h3, h4 {
-            color: #FCFCFC;
-            font-family: Garamond, Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 10px 0;
-        }
-
         h1 {
-            font-size: 24px;
-            color: #F56476;
+            color: #F3A712;
+            text-align: center;
+            font-size: 26px;
+            font-family: Garamond;
+            margin-bottom: 10px;
         }
-
         h2 {
-            font-size: 20px;
-            color: #F56476;
+            font-size: 22px;
+            color: #FCFCFC;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-family: Helvetica;
+            text-align: center;
         }
-
         h3 {
-            font-size: 18px;
-            color: #A5C4D4;
+            text-align: center;
+            font-size: 20px;
+            color: #FCFCFC;
+            font-family: Helvetica;
+            margin-top: 30px;
+            margin-bottom: 20px;
         }
 
+        /* Post title..... */
         h4 {
-            font-size: 16px;
-            color: #8499B1;
+            text-align: center;
+            font-size: 18px;
+            color: #FCFCFC;
+            font-family: Helvetica;
+            margin-top: 30px;
+            margin-bottom: 20px;
         }
+
+        /* Here are the commetns for this post */
+        h5 {
+            font-size: 18px;
+            color: #A7CECB;
+            font-style: italic;
+            font-family: Arial;
+        }
+
+        h6 {
+            font-size: 20px;
+            color: #A5C4D4;
+            font-family: Arial;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #F3A712;
+            font-family: Arial;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+
 
         ul {
             list-style: none;
             padding: 0;
+            color: #A7CECB;
         }
 
         li {
             padding: 5px 0;
+            color: #A7CECB;
         }
 
         input[type="text"], input[type="submit"] {
@@ -111,15 +145,15 @@
     </style>
 
     <div class="container">
-        <h1>I am showing a post detail!</h1>
+        <h1>I am the details from a single post!</h1>
 
         <ul>
-            <li><h2>Post Title: {{ $post->postTitle }}</h2></li>
-            <li><h3>Post Content: {{ $post->postContent }}</h3></li>
-            <li><h4>Post Category: {{ $post->postCategory }}</h4></li>
+            <li><h2><b>Post Title:</b> <br> {{ $post->postTitle }}</h2></li>
+            <li><h3><b>Post Content:</b> <br> {{ $post->postContent }}</h3></li>
+            <li><h4><i>Post Category:</i> <br> {{ $post->postCategory }}</h4></li>
         </ul>
 
-        <h2>Here are the comments for this post:</h2>
+        <h5>Here are the comments for this post:</h5>
         <ul>
             @foreach($post->comments as $comment)
                 <li>{{ $comment->commentContent }}</li>
@@ -140,13 +174,6 @@
             @method('DELETE')
             <button class="delete-button" type="submit">Delete This Post</button>
             </form>
-
-
-            <!-- <form method="POST" action="{{ route('posts.destroy', ['id' => $post->id]) }}">
-                @csrf
-                @method('DELETE')
-                <button class="bg-rose-600 hover:bg-rose-600" type="submit">Delete</button>
-            </form> -->
 
         @endif
     </div>
